@@ -2,11 +2,6 @@
 namespace Asgard\Db\Tests;
 
 class DBTest extends \PHPUnit_Framework_TestCase {
-	public static function setUpBeforeClass() {
-		if(!defined('_ENV_'))
-			define('_ENV_', 'test');
-	}
-
 	public function test1() {
 		$config = [
 			'host' => 'localhost',
@@ -62,7 +57,8 @@ class DBTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(3, $db->query('SELECT * FROM news')->count());
 
-		$this->assertEquals(5, $db->query('INSERT INTO news (title) VALUES (?)', ['Another news!'])->id());
+		$db->query('INSERT INTO news (title) VALUES (?)', ['Another news!']);
+		$this->assertEquals(5, $db->id());
 
 		$this->assertEquals(4, $db->query('UPDATE news SET title = ?', ['test'])->affected());
 	}
