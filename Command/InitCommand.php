@@ -1,5 +1,5 @@
 <?php
-namespace Asgard\Db\Commands;
+namespace Asgard\Db\Command;
 
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
